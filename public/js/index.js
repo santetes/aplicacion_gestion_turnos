@@ -38,6 +38,10 @@ $btn_escritorio.addEventListener('click', () => {
 
         //TODO: Implementar funcionamiento desde Heroku
 
-        location.assign('http://localhost:8080/escritorio.html')
+        let url = window.location.host.includes('localhost')
+            ? 'http://localhost:8080/escritorio.html'
+            : 'http://192.168.1.150:8080/escritorio.html'
+
+        location.assign(url)
     }
 })

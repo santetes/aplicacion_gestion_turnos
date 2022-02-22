@@ -55,7 +55,32 @@ class TicketControl {
         return this.ultimo
     }
 
-    atenderTicket(escritorio) {}
+    atenderTicket(escritorio) {
+        let ticket_a_atender = this.tickets.shift()
+
+        if (!ticket_a_atender) {
+            ticket_a_atender = {
+                numero: null,
+                escritorio: null,
+            }
+            const cuantosQuedan = 0
+            return {
+                ticket_a_atender,
+                cuantosQuedan,
+            }
+        }
+
+        ticket_a_atender.escritorio = escritorio
+        this.ultimos4.push(ticket_a_atender)
+        if (this.ultimos4.length > 4) {
+            this.ultimos4.shift()
+        }
+        this.guardarDb()
+
+        const cuantosQuedan = this.tickets.length
+
+        return { ticket_a_atender, cuantosQuedan }
+    }
 }
 
 module.exports = { TicketControl }
