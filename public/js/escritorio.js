@@ -34,11 +34,16 @@ $btn_atender.addEventListener('click', () => {
     })
 
     // reproducir sonido
-    let sonido = document.createElement('audio')
+    /* let sonido = document.createElement('audio')
     sonido.setAttribute('src', './audio/new-ticket.mp3')
     sonido.setAttribute('autoplay', true)
     document.body.appendChild(sonido)
     setTimeout(() => {
         document.body.removeChild(sonido)
-    }, 500)
+    }, 500) */
+
+    // Otra forma de hacerlo es la siguiente:
+    // Esto en lugar de crearlo en la pantalla escritorio, se podria crear en la pantalla pública, el único inconveniente es que chrome bloquea los audios y videso si el usuario no ha efectuado alguna interacción. Firefox permite configurar esto para permitirlo
+    const audio = new Audio('./audio/new-ticket.mp3')
+    audio.play()
 })
