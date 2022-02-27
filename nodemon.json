@@ -1,0 +1,4 @@
+{
+    "ignore": ["db/*.json"],
+    "comentario": "Este archivo es creado para configurar nodemon y decirle que cualquier cambio en el archivo indicado anterior no haga recargar nodemon. Esto es para que en esta aplicación cunado se pulsa en nuevo ticket no reinicie nodemon provocando microcortes de conexión"
+}

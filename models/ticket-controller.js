@@ -27,6 +27,15 @@ class TicketControl {
         }
     }
 
+    get infoCuatro() {
+        return {
+            ticket_1: this.ultimos4[0] ?? { numero: 'sin-info', escritorio: 'sin-info' },
+            ticket_2: this.ultimos4[1] ?? { numero: 'sin-info', escritorio: 'sin-info' },
+            ticket_3: this.ultimos4[2] ?? { numero: 'sin-info', escritorio: 'sin-info' },
+            ticket_4: this.ultimos4[3] ?? { numero: 'sin-info', escritorio: 'sin-info' },
+        }
+    }
+
     init() {
         //Reseteo de la base de datos diario:
         //Leemos archivo bbdd
@@ -71,9 +80,9 @@ class TicketControl {
         }
 
         ticket_a_atender.escritorio = escritorio
-        this.ultimos4.push(ticket_a_atender)
+        this.ultimos4.unshift(ticket_a_atender)
         if (this.ultimos4.length > 4) {
-            this.ultimos4.shift()
+            this.ultimos4.pop()
         }
         this.guardarDb()
 

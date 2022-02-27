@@ -45,3 +45,12 @@ $btn_escritorio.addEventListener('click', () => {
         location.assign(url)
     }
 })
+// Existe otra forma más adecuada de pasar los parámetros del escritório seleccionado. Esto es usando un formulario. donde al pulsar en el botón submit, pase en la dirección indicada (escritorio.html) en el "action" el campo donde se indica el número de escritorio
+
+// form action="escritorio.html"
+// input type="text" name="escritorio"
+// button type="submit"
+//Luego en la página del escritório, mediante javascript se seleccionaria de la barra de URL el parámetro necesario mediante el siguiente script
+
+// const searchParams = new URLSearchParams(window.location.search)
+// const escritorio = searchParams.get('escritorio')

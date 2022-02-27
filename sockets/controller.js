@@ -5,6 +5,13 @@ const ticketControl = new TicketControl()
 const socketController = (socket) => {
     socket.on('disconnect', () => {})
 
+    // Emite a la nueva conexión entrante info del último ticket, el numero de tickets restantes y los últimos 4 tickets para que cada pantalla correspondiente muestre la información actual al conectar
+    socket.emit('info-inicial', {
+        ultimo: ticketControl.ultimo,
+        restantes: ticketControl.tickets.length,
+        cuatroUltimos: ticketControl.infoCuatro,
+    })
+
     socket.on('nuevo-ticket', (payload, callback) => {
         // Crea un nuevo ticket y almacena su número en último y guarda la bbdd
         const ultimo = ticketControl.siguiente()
@@ -21,7 +28,11 @@ const socketController = (socket) => {
 
         socket.broadcast.emit('server-comunica-nuevo-ticket', ticketControl.tickets.length)
 
-        socket.broadcast.emit('actualiza-publico', ticketControl.ultimos4)
+        socket.broadcast.emit('actualiza-publico', {
+            ultimo: ticketControl.ultimo,
+            restantes: ticketControl.tickets.length,
+            cuatroUltimos: ticketControl.infoCuatro,
+        })
     })
 }
 

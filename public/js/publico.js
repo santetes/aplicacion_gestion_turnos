@@ -11,14 +11,13 @@ const $lblTicket4 = document.querySelector('#lblTicket4')
 const $lblEscritorio4 = document.querySelector('#lblEscritorio4')
 
 //Evento a la escucha del servidor
-socket.on('actualiza-publico', (arrayUltimos4) => {
-    console.log('llega aquí')
-    $lblTicket1.textContent = arrayUltimos4[3].numero
-    $lblEscritorio1.textContent = arrayUltimos4[3].escritorio
-    $lblTicket2.textContent = arrayUltimos4[2].numero
-    $lblEscritorio2.textContent = arrayUltimos4[2].escritorio
-    $lblTicket3.textContent = arrayUltimos4[1].numero
-    $lblEscritorio3.textContent = arrayUltimos4[1].escritorio
-    $lblTicket4.textContent = arrayUltimos4[0].numero
-    $lblEscritorio4.textContent = arrayUltimos4[0].escritorio
+socket.on('info-inicial', ({ cuatroUltimos }) => {
+    $lblTicket1.textContent = cuatroUltimos.ticket_1.numero
+    $lblEscritorio1.textContent = cuatroUltimos.ticket_1.escritorio
+    $lblTicket2.textContent = cuatroUltimos.ticket_2.numero
+    $lblEscritorio2.textContent = cuatroUltimos.ticket_2.escritorio
+    $lblTicket3.textContent = cuatroUltimos.ticket_3.numero
+    $lblEscritorio3.textContent = cuatroUltimos.ticket_3.escritorio
+    $lblTicket4.textContent = cuatroUltimos.ticket_4.numero
+    $lblEscritorio4.textContent = cuatroUltimos.ticket_4.escritorio
 })
